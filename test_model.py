@@ -1,7 +1,7 @@
 import unittest
 import numpy as np
 from models.production_model import ProductionModel
-from model import Model  # or whatever your model class is named
+from model import Model  
 from production_model import ProductionModel
 
 class TestProductionModel(unittest.TestCase):
