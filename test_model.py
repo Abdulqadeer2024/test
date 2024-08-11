@@ -1,6 +1,8 @@
 import unittest
 import numpy as np
 from models.production_model import ProductionModel
+from model import Model  # or whatever your model class is named
+from production_model import ProductionModel
 
 class TestProductionModel(unittest.TestCase):
     def setUp(self):
