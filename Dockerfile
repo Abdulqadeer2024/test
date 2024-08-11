@@ -7,7 +7,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-RUN python -m unittest discover tests
+RUN pytest tests/
 
 EXPOSE 8000
 
