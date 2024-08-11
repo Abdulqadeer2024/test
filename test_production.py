@@ -1,6 +1,8 @@
 import pytest
 import numpy as np
 from katabatic.models.production_model import ProductionModel
+from model import Model  
+from production_model import ProductionModel
 
 @pytest.fixture
 def model():
