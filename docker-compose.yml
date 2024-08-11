@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  katabatic-model:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - FLASK_ENV=production
+    volumes:
+      - ./data:/app/data
+    restart: always
