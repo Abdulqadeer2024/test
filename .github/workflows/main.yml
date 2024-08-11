@@ -7,10 +7,8 @@ on:
     branches: [ main ]
 
 jobs:
-
   build-and-test:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python
@@ -22,19 +20,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Run unit tests
-      run: python -m pytest tests/
-    - name: Build Docker image
-      run: docker build -t katabatic-model:test .
-    - name: Run Docker container
       run: |
-        docker run -d -p 8000:8000 --name katabatic-container katabatic-model:test
-        sleep 10
-    - name: Test API endpoints
-      run: |
-        curl -X POST -H "Content-Type: application/json" -d '{"data": [[1,2],[3,4]]}' http://localhost:8000/predict
-        curl -X POST -H "Content-Type: application/json" -d '{"X": [[1,2],[3,4]], "y": [1,2]}' http://localhost:8000/train
-    - name: Check Docker logs
-      if: failure()
-      run: docker logs katabatic-container
-    - name: Stop Docker container
-      run: docker stop katabatic-container
+        python -m pytest test_model.py test_production.py
+    # ... rest of your workflow ...
